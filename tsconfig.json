@@ -7,7 +7,7 @@
         "sourceMap": true
     },
     "exclude": [
-        "dist",
+        "build",
         "node_modules",
         "typings"
     ]  

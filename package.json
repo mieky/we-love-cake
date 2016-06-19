@@ -4,12 +4,16 @@
   "description": "days since last cake",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf build",
+    "compile": "mkdir build && cp app/index.html build && tsc app/cake.ts --outDir build"
   },
   "author": "Mike Arvela <mike@arvela.net>",
   "license": "MIT",
   "dependencies": {
     "react": "^15.1.0",
     "react-dom": "^15.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^1.8.10"
   }
 }
