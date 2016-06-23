@@ -11,5 +11,11 @@ To get it running, you would do something like:
     typings install
     npm run build
     open build/index.html
-    
-    
+
+## Acknowledgements
+
+This project is a grateful recipient of the [Futurice Open Source sponsorship program](http://futurice.com/blog/sponsoring-free-time-open-source-activities).
+
+## License
+
+[MIT](https://github.com/mieky/we-love-cake/blob/master/LICENSE)    
