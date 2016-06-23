@@ -8,3 +8,4 @@ class Greeter {
 var greeter = new Greeter("Cake, oh my!");
     
 document.body.innerHTML = greeter.greet();
+

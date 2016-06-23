@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "rm -rf build",
     "copy": "mkdir build && cp app/index.html build",
-    "build": "npm run clean && npm run copy && browserify app/cake.ts -p [ tsify ] >build/cake.js"
+    "build": "npm run clean && npm run copy && browserify app/cake.ts -p [ tsify ] >build/cake.js",
+    "watch": "watchify app/cake.ts -p [ tsify ] -o build/cake.js --debug --verbose"
   },
   "author": "Mike Arvela <mike@arvela.net>",
   "license": "MIT",
@@ -17,6 +18,7 @@
   "devDependencies": {
     "browserify": "^13.0.1",
     "tsify": "^0.16.0",
-    "typescript": "^1.8.10"
+    "typescript": "^1.8.10",
+    "watchify": "^3.7.0"
   }
 }
