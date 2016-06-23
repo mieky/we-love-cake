@@ -1,13 +1,13 @@
 {
-  "name": "we-love-cake",
+  "name": "we-love-app",
   "version": "1.0.0",
   "description": "days since last cake",
-  "main": "index.js",
+  "main": "app/app.tsx",
   "scripts": {
     "clean": "rm -rf build",
     "copy": "mkdir build && cp app/index.html build",
-    "build": "npm run clean && npm run copy && browserify app/cake.ts -p [ tsify ] >build/cake.js",
-    "watch": "watchify app/cake.ts -p [ tsify ] -o build/cake.js --debug --verbose"
+    "build": "npm run clean && npm run copy && browserify app/app.tsx -p [ tsify babelify ] >build/app.js",
+    "watch": "watchify app/app.tsx -p [ tsify babelify ] -o build/app.js --debug --verbose"
   },
   "author": "Mike Arvela <mike@arvela.net>",
   "license": "MIT",
@@ -16,6 +16,7 @@
     "react-dom": "^15.1.0"
   },
   "devDependencies": {
+    "babelify": "^7.3.0",
     "browserify": "^13.0.1",
     "tsify": "^0.16.0",
     "typescript": "^1.8.10",
