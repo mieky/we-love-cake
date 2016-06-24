@@ -16,6 +16,7 @@
         "typings"
     ],
     "files": [
-        "app/app.tsx"
+        "app/app.tsx",
+        "typings/index.d.ts"
     ]
 }
