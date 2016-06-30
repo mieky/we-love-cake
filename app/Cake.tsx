@@ -7,20 +7,32 @@ interface CakeProps extends React.Props<any> {
     date?: Date;
 }
 
+interface CakeListProps extends React.Props<any> {
+    cakes: CakeProps[];
+}
+
 class CakeComponent extends React.Component<CakeProps, {}> {
     render() {
         return (
             <div>
-            {this.props.name} ({this.props.date.toTimeString()})
+                {this.props.name} ({this.props.date.toDateString()})
             </div>
         )
     }
 }
 
-class CakeListComponent extends React.Component<{}, {}> {
+class CakeListComponent extends React.Component<CakeListProps, void> {
     render() {
-        return <div>cake list</div>
+        const cakes = this.props.cakes.sort((a, b) => a.date > b.date ? -1 : 1);
+        return (
+            <div>
+                {cakes.map(cake => <CakeComponent {...cake} />)}
+            </div>
+        );
     }
 }
 
-export { CakeProps, CakeComponent };
+export {
+    CakeListProps,
+    CakeListComponent
+};
