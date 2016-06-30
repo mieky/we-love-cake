@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { CakeListProps, CakeListComponent } from "./Cake.tsx";
+import { CakeListProps, CakeList, CakeInput } from "./Cake.tsx";
 
 const cakeListProps: CakeListProps = {
     cakes: [
@@ -17,5 +17,5 @@ const cakeListProps: CakeListProps = {
     ]
 };
 
-ReactDOM.render(<CakeListComponent {...cakeListProps} />,
+ReactDOM.render(<div><CakeList {...cakeListProps} /><CakeInput /></div>,
     document.getElementById("content"));
