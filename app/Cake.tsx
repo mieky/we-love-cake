@@ -67,6 +67,7 @@ class CakeInput extends React.Component<any, void> {
 }
 
 export {
+    CakeProps,
     CakeListProps,
     CakeList,
     CakeInput
