@@ -8,8 +8,9 @@ class CakeInput extends React.Component<any, CakeInputState> {
     constructor(props: React.Props<any>) {
         super(props);
 
-        // Required because of the ES6 class syntax decifiency
+        // Rebindings required because of the ES6 class syntax decifiency
         this.onSubmit = this.onSubmit.bind(this);
+        this.updateState = this.updateState.bind(this);
         this.state = { value: "" };
     }
 
@@ -30,16 +31,20 @@ class CakeInput extends React.Component<any, CakeInputState> {
         // Propagate to external handler
         this.props.onSubmit(newCake);
 
-        // State didn't for some reason propagate correctly to the input's default value,
-        // so clearing the input field directly for now
-        this.refs.cakeName.value = "";
+        // Equally valid for this use case, but less React-kosher would have been simply to this.refs.cakeName.value = "";
+        this.setState({ value: "" }); 
+    }
+
+    updateState(e: Event) {
+        const newValue = this.refs.cakeName.value;
+        this.setState({ value: newValue });
     }
 
     render() {
         return (
             <form onSubmit={this.onSubmit}>
                 <h3>New cake</h3>
-                <input ref="cakeName" type="text" placeholder="Cake name" />
+                <input ref="cakeName" type="text" onChange={this.updateState} value={this.state.value} placeholder="Cake name" />
                 <button type="submit">Add</button>
             </form>
         );
