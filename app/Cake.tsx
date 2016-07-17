@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import Store from "./store";
 
 interface CakeProps extends React.Props<any> {
     name: string;
@@ -41,6 +42,7 @@ class CakeInput extends React.Component<any, void> {
     constructor(props: React.Props<any>) {
         super(props);
 
+        // Required because of the ES6 class syntax decifiency
         this.onSubmit = this.onSubmit.bind(this);
     } 
 
@@ -51,8 +53,15 @@ class CakeInput extends React.Component<any, void> {
 
     onSubmit(e: Event) {
         e.preventDefault();
+        
+        const newCake = {
+            name: this.refs.cakeName.value,
+            description: "",
+            date: new Date()
+        };
 
-        console.log("TODO: add new cake", this.refs.cakeName.value);
+        // Propagate to external handler
+        this.props.onSubmit(newCake);
     }
 
     render() {
