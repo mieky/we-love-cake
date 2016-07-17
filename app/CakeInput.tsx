@@ -5,7 +5,7 @@ interface CakeInputState {
 }
 
 class CakeInput extends React.Component<any, CakeInputState> {
-    constructor(props: React.Props<any>) {
+    constructor(props: Object) {
         super(props);
 
         // Rebindings required because of the ES6 class syntax decifiency

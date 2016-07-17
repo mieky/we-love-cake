@@ -6,7 +6,7 @@ import CakeInput from "./CakeInput.tsx";
 import Store from "./store";
 
 class CakeApp extends React.Component<any, void> {
-    constructor(props: React.Props<any>) {
+    constructor(props: any) {
         super(props);
 
         this.handleNewCake = this.handleNewCake.bind(this);

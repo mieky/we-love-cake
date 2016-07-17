@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Cake, CakeProps } from "./Cake.tsx";
 
-interface CakeListProps extends React.Props<any> {
+interface CakeListProps {
     cakes: CakeProps[];
 }
 

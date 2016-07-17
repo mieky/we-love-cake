@@ -1,6 +1,6 @@
 import * as React from "react";
 
-interface CakeProps extends React.Props<any> {
+interface CakeProps {
     name: string;
     description?: string;
     date?: Date;
