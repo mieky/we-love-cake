@@ -11,7 +11,7 @@ body {
     padding: 0;
 }
 
-.cake {
+.cake {    
     display: flex;
     flex: 1;
     min-height: 200px;
@@ -25,19 +25,25 @@ body {
     flex-direction: column;
     justify-content: flex-end;
     text-align: center;
+    transition: all .1s ease-in-out;
 }
 
-.cake .cake-picture {
+.cake:hover {    
+    transform: rotate(-2deg);
+}
+
+.cake-picture {
     flex: 1;
     min-height: 150px;
 }
 
-.cake .cake-name {
+.cake-name {
     font-size: 22px;
     margin: 10px auto;
+    transition: all .1s ease-in-out;
 }
 
-.cake .cake-date {
+.cake-date {
     font-size: smaller;
     text-transform: uppercase;
 }
