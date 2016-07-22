@@ -31,7 +31,7 @@ class CakeCounter extends React.Component<CakeListProps, CakeCounterState> {
     }
 
     componentWillReceiveProps(nextProps: CakeListProps) {
-        this.state = this.calculateNewState(nextProps);
+        this.setState(this.calculateNewState(nextProps));
     }
 
     calculateDaysSinceLastCake(cakes: any) {        
