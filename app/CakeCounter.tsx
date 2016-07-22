@@ -34,16 +34,25 @@ class CakeCounter extends React.Component<CakeListProps, CakeCounterState> {
         this.setState(this.calculateNewState(nextProps));
     }
 
-    calculateDaysSinceLastCake(cakes: any) {        
-        const lastCake = this.props.cakes[0];
+    calculateDaysSinceLastCake(cakes: any): number {
+        if (cakes.length === 0) {
+            return null;
+        }
+        const lastCake = cakes[0];
         return this.calculateDateDiffInDays(new Date(), lastCake.date);
     }
 
     render() {
-        const msg = this.state.daysSinceLastCake === 0 ?
-            <div>cake was <div className="cake-counter-daycount">just</div> had! lucky day!</div> :
-            <div><div className="cake-counter-daycount">{this.state.daysSinceLastCake}</div> days since last cake</div>;
+        const days = this.state.daysSinceLastCake;
 
+        let msg: JSX.Element = null;
+        if (days === null) {
+            msg = <div>why not have <div className="cake-counter-daycount">cake</div> today?</div>;
+        } else if (days === 0) {
+            msg =<div>cake was <div className="cake-counter-daycount">just</div> had! lucky day!</div>; 
+        } else {
+            msg = <div><div className="cake-counter-daycount">{this.state.daysSinceLastCake}</div> days since last cake</div>; 
+        }
         return (<div className="cake-counter">{msg}</div>);
     }
 }
