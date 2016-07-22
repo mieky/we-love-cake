@@ -40,9 +40,11 @@ class CakeCounter extends React.Component<CakeListProps, CakeCounterState> {
     }
 
     render() {
-        return (<div className="cake-counter">
-            <div className="cake-counter-daycount">{this.state.daysSinceLastCake}</div> days since last cake
-        </div>);
+        const msg = this.state.daysSinceLastCake === 0 ?
+            <div>cake was <div className="cake-counter-daycount">just</div> had! lucky day!</div> :
+            <div><div className="cake-counter-daycount">{this.state.daysSinceLastCake}</div> days since last cake</div>;
+
+        return (<div className="cake-counter">{msg}</div>);
     }
 }
 
