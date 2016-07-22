@@ -7,7 +7,7 @@ interface CakeListProps {
 
 class CakeList extends React.Component<CakeListProps, void> {
     render() {
-        const cakes = this.props.cakes.sort((a, b) => a.date > b.date ? -1 : 1);
+        const cakes = this.props.cakes;
         return (
             <div>
                 <h3>Hall of cake fame</h3>

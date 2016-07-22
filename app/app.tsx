@@ -1,9 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import Store from "./store";
 import { CakeProps } from "./Cake.tsx";
+import { CakeCounter } from "./CakeCounter.tsx";
 import { CakeList, CakeListProps } from "./CakeList.tsx";
 import CakeInput from "./CakeInput.tsx";
-import Store from "./store";
 
 class CakeApp extends React.Component<any, void> {
     constructor(props: any) {
@@ -20,6 +21,7 @@ class CakeApp extends React.Component<any, void> {
     render() {
         const cakes = this.props.store.getCakes();
         return <div>
+            <CakeCounter cakes={cakes} />
             <CakeList cakes={cakes} />
             <CakeInput onSubmit={this.handleNewCake} />
         </div>;
