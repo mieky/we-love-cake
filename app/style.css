@@ -32,9 +32,14 @@ body {
     transform: rotate(-2deg);
 }
 
+.cake.cake-dragged-over {
+    background-color: #9c27b0;
+}
+
 .cake-picture {
     flex: 1;
     min-height: 150px;
+    pointer-events: none;
 }
 
 .cake-name {

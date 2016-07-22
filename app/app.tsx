@@ -13,6 +13,13 @@ class CakeApp extends React.Component<any, void> {
         this.handleNewCake = this.handleNewCake.bind(this);
     }   
 
+    componentWillMount() {
+        // Prevent browser from opening dropped items
+        document.addEventListener("dragover", function(e: DragEvent) {
+            event.preventDefault();
+        }, false);        
+    }
+
     handleNewCake(cake: CakeProps) {
         this.props.store.addCake(cake);
         this.forceUpdate();
@@ -27,6 +34,6 @@ class CakeApp extends React.Component<any, void> {
         </div>;
     }
 }
-
+ 
 ReactDOM.render(<CakeApp store={Store} />,
     document.getElementById("content"));
