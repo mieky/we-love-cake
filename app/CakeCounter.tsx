@@ -10,8 +10,13 @@ class CakeCounter extends React.Component<CakeListProps, CakeCounterState> {
     constructor(props: CakeListProps) {
         super(props);
 
-        this.state = {
-            daysSinceLastCake: this.calculateDaysSinceLastCake(this.props.cakes)
+        this.calculateNewState = this.calculateNewState.bind(this);
+        this.state = this.calculateNewState(this.props);
+    }
+
+    calculateNewState(props: CakeListProps): CakeCounterState {
+        return {
+            daysSinceLastCake: this.calculateDaysSinceLastCake(props.cakes)
         };
     }
 
@@ -25,13 +30,16 @@ class CakeCounter extends React.Component<CakeListProps, CakeCounterState> {
         return Math.abs(Math.floor((utc2 - utc1) / MILLISECONDS_IN_DAY));
     }
 
+    componentWillReceiveProps(nextProps: CakeListProps) {
+        this.state = this.calculateNewState(nextProps);
+    }
+
     calculateDaysSinceLastCake(cakes: any) {        
         const lastCake = this.props.cakes[0];
         return this.calculateDateDiffInDays(new Date(), lastCake.date);
     }
 
     render() {
-        console.log("cakecounter render", new Date());
         return (<div>
             Days since last cake: {this.state.daysSinceLastCake}
         </div>);
