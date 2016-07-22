@@ -1,6 +1,7 @@
 import * as React from "react";
 
 interface CakeInputState {
+    open: boolean;
     value: string;
 }
 
@@ -10,13 +11,24 @@ class CakeInput extends React.Component<any, CakeInputState> {
 
         // Rebindings required because of the ES6 class syntax decifiency
         this.onSubmit = this.onSubmit.bind(this);
+        this.toggleOpen = this.toggleOpen.bind(this);
         this.updateState = this.updateState.bind(this);
-        this.state = { value: "" };
+
+        this.state = {
+            open: false,
+            value: ""
+        };
     }
 
     refs: {
         [string: string]: any;
         cakeName: any;
+    }
+
+    componentDidUpdate() {
+        if (this.state.open) {
+            this.refs.cakeName.focus();
+        }
     }
 
     onSubmit(e: Event) {
@@ -32,22 +44,49 @@ class CakeInput extends React.Component<any, CakeInputState> {
         this.props.onSubmit(newCake);
 
         // Equally valid for this use case, but less React-kosher would have been simply to this.refs.cakeName.value = "";
-        this.setState({ value: "" }); 
+        this.setState({
+            open: false,
+            value: ""
+        }); 
+    }
+
+    toggleOpen(e: Event) {
+        this.setState({
+            open: !this.state.open,
+            value: this.state.value
+        });
     }
 
     updateState(e: Event) {
         const newValue = this.refs.cakeName.value;
-        this.setState({ value: newValue });
+        this.setState({
+            open: this.state.open,
+            value: newValue
+        });
     }
 
     render() {
-        return (
-            <form onSubmit={this.onSubmit}>
-                <h3>New cake</h3>
-                <input ref="cakeName" type="text" onChange={this.updateState} value={this.state.value} placeholder="Cake name" />
-                <button type="submit">Add</button>
-            </form>
-        );
+        let content: JSX.Element = null;
+
+        if (this.state.open) {
+            content = <div>
+                <div className="cake-input-details">
+                    <input className="cake-input-text"
+                        type="text"
+                        ref="cakeName"
+                        onChange={this.updateState}
+                        value={this.state.value}
+                        placeholder="what was the cake called?" />
+                </div>
+                <a href="#" onClick={this.toggleOpen}>hmm, maybe later...</a>
+            </div>; 
+        } else {
+            content = <a href="#" onClick={this.toggleOpen}>just had cake? let's add it!</a>;
+        }
+
+        return <form className="cake-input" onSubmit={this.onSubmit}>
+            {content}
+        </form>;
     }
 }
 
