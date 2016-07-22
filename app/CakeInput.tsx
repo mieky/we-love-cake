@@ -13,6 +13,7 @@ class CakeInput extends React.Component<any, CakeInputState> {
         this.onSubmit = this.onSubmit.bind(this);
         this.toggleOpen = this.toggleOpen.bind(this);
         this.updateState = this.updateState.bind(this);
+        this.checkIfCanceledByKeypress = this.checkIfCanceledByKeypress.bind(this); 
 
         this.state = {
             open: false,
@@ -25,9 +26,10 @@ class CakeInput extends React.Component<any, CakeInputState> {
         cakeName: any;
     }
 
-    componentDidUpdate() {
-        if (this.state.open) {
-            this.refs.cakeName.focus();
+    checkIfCanceledByKeypress(e: KeyboardEvent) {
+        // Allow canceling by esc key
+        if (e.keyCode === 27) {
+            this.toggleOpen(e);
         }
     }
 
@@ -40,10 +42,14 @@ class CakeInput extends React.Component<any, CakeInputState> {
             date: new Date()
         };
 
+        // Disallow nameless cakes
+        if (newCake.name.trim() === "") {
+            return;
+        }
+
         // Propagate to external handler
         this.props.onSubmit(newCake);
 
-        // Equally valid for this use case, but less React-kosher would have been simply to this.refs.cakeName.value = "";
         this.setState({
             open: false,
             value: ""
@@ -65,6 +71,12 @@ class CakeInput extends React.Component<any, CakeInputState> {
         });
     }
 
+    componentDidUpdate() {
+        if (this.state.open) {
+            this.refs.cakeName.focus();
+        }
+    }
+
     render() {
         let content: JSX.Element = null;
 
@@ -74,14 +86,15 @@ class CakeInput extends React.Component<any, CakeInputState> {
                     <input className="cake-input-text"
                         type="text"
                         ref="cakeName"
+                        onKeyDown={this.checkIfCanceledByKeypress}
                         onChange={this.updateState}
                         value={this.state.value}
                         placeholder="what was the cake called?" />
                 </div>
-                <a href="#" onClick={this.toggleOpen}>hmm, maybe later...</a>
+                <a className="cake-input-link" onClick={this.toggleOpen}>hmm, maybe later...</a>
             </div>; 
         } else {
-            content = <a href="#" onClick={this.toggleOpen}>just had cake? let's add it!</a>;
+            content = <a className="cake-input-link" onClick={this.toggleOpen}>just had cake? let's add it!</a>;
         }
 
         return <form className="cake-input" onSubmit={this.onSubmit}>

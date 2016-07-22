@@ -4,6 +4,7 @@ interface CakeProps {
     name: string;
     description?: string;
     date?: Date;
+    imageURL?: string;
 }
 
 class Cake extends React.Component<CakeProps, void> {
