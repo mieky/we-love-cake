@@ -4,10 +4,12 @@
   "description": "days since last cake",
   "main": "app/app.tsx",
   "scripts": {
-    "clean": "rm -rf build",
-    "copy": "mkdir build && cp app/index.html build",
-    "build": "npm run clean && npm run copy && browserify app/app.tsx -p [ tsify babelify ] >build/app.js",
-    "watch": "watchify app/app.tsx -p [ tsify babelify ] -o build/app.js --debug --verbose"
+    "clean": "rm -rf build/*",
+    "copy": "cat app/index.html >build/index.html ; cat app/*.css >build/style.css",
+    "build": "npm run copy && browserify app/app.tsx -p [ tsify babelify ] >build/app.js",
+    "watch": "npm run watch-ts & npm run watch-css",
+    "watch-ts": "watchify app/app.tsx -p [ tsify babelify ] -o build/app.js --debug --verbose",
+    "watch-css": "catw app/*.css -o build/style.css -v"
   },
   "author": "Mike Arvela <mike@arvela.net>",
   "license": "MIT",
@@ -18,6 +20,7 @@
   "devDependencies": {
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
+    "catw": "^1.0.1",
     "tsify": "^0.16.0",
     "typescript": "^1.8.10",
     "watchify": "^3.7.0"

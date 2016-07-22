@@ -9,8 +9,10 @@ interface CakeProps {
 class Cake extends React.Component<CakeProps, void> {
     render() {
         return (
-            <div>
-                {this.props.name} ({this.props.date.toDateString()})
+            <div className="cake">
+                <div className="cake-picture"></div>
+                <div className="cake-name">{this.props.name}</div>
+                <div className="cake-date">{this.props.date.toDateString()}</div>
             </div>
         );
     }

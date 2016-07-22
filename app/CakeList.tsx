@@ -9,13 +9,12 @@ class CakeList extends React.Component<CakeListProps, void> {
     render() {
         const cakes = this.props.cakes;
         return (
-            <div>
-                <h3>Hall of cake fame</h3>
-                <ul>
-                    {cakes.map(cake => <li key={cake.name}>
-                        <Cake {...cake} />
-                    </li>)}
-                </ul>
+            <div className="cakelist-container">                
+                <div className="cakelist-items">
+                    {cakes.map(cake => 
+                        <Cake key={cakes.indexOf(cake)} {...cake} />
+                    )}
+                </div>
             </div>
         );
     }
