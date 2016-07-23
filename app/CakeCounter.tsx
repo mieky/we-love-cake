@@ -51,7 +51,7 @@ class CakeCounter extends React.Component<CakeListProps, CakeCounterState> {
         } else if (days === 0) {
             msg =<div>cake was <div className="cake-counter-daycount">just</div> had! lucky day!</div>; 
         } else {
-            msg = <div><div className="cake-counter-daycount">{this.state.daysSinceLastCake}</div> days since last cake</div>; 
+            msg = <div><div className="cake-counter-daycount">{this.state.daysSinceLastCake}</div> days since last cake.</div>; 
         }
         return (<div className="cake-counter">{msg}</div>);
     }
