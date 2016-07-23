@@ -12,7 +12,7 @@ class CakeList extends React.Component<CakeListProps, void> {
             <div className="cakelist-container">                
                 <div className="cakelist-items">
                     {cakes.map(cake => 
-                        <Cake key={cakes.indexOf(cake)} {...cake} />
+                        <Cake key={cake.id} {...cake} />
                     )}
                 </div>
             </div>

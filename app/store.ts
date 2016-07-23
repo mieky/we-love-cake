@@ -4,7 +4,10 @@ class Store {
     static _cakes: CakeProps[] = [];
 
     static getCakes(): CakeProps[] {
-        return this._cakes.sort((a, b) => a.date > b.date ? -1 : 1);
+        return this._cakes.sort((a, b) => a.date > b.date ? -1 : 1)
+            .map((c, i) => Object.assign(c, {
+                id: c.name + c.description + c.date
+            }));
     }
 
     static addCake(cake: CakeProps):void {
