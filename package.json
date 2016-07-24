@@ -7,6 +7,8 @@
     "clean": "rm -rf build/*",
     "copy": "cat app/index.html >build/index.html ; cat app/*.css >build/style.css",
     "build": "npm run copy && browserify app/app.tsx -p [ tsify babelify ] >build/app.js",
+    "server": "ts-node server",
+    "server-dev": "npm run watch & npm run server",
     "watch": "npm run watch-ts & npm run watch-css",
     "watch-ts": "watchify app/app.tsx -p [ tsify babelify ] -o build/app.js --debug --verbose",
     "watch-css": "catw app/*.css -o build/style.css -v"
@@ -14,8 +16,10 @@
   "author": "Mike Arvela <mike@arvela.net>",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.14.0",
     "react": "^15.1.0",
-    "react-dom": "^15.1.0"
+    "react-dom": "^15.1.0",
+    "ts-node": "^1.2.1"
   },
   "devDependencies": {
     "babelify": "^7.3.0",

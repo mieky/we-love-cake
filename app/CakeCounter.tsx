@@ -35,6 +35,7 @@ class CakeCounter extends React.Component<CakeListProps, CakeCounterState> {
     }
 
     calculateDaysSinceLastCake(cakes: any): number {
+        console.log("moicca");
         if (cakes.length === 0) {
             return null;
         }

@@ -2,15 +2,13 @@
 
 A simple "days since cake was last had" app with Typescript and React.
 
-I won't lie to you, it was a pain in the ass to get the most basic stuff working. Damn, this machine is picky!
-
-To get it running, you would do something like:
+Requires NodeJS 4.0+. To get it running, you would do something like:
 
     npm install -g typings
     npm install
     typings install
-    npm run build
-    open build/index.html
+    npm run server-dev
+    open localhost:3000
 
 ## Acknowledgements
 
