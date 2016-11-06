@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Cake, CakeProps } from "./Cake.tsx";
+import { Cake, CakeProps } from "./Cake";
 
 interface CakeListProps {
     cakes: CakeProps[];

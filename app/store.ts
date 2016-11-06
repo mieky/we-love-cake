@@ -1,4 +1,4 @@
-import { CakeProps } from "./Cake.tsx";
+import { CakeProps } from "./Cake";
 
 class Store {
     static _cakes: CakeProps[] = [];

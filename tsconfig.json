@@ -12,11 +12,9 @@
     },
     "exclude": [
         "build",
-        "node_modules",
-        "typings"
+        "node_modules"
     ],
     "files": [
-        "app/app.tsx",
-        "typings/index.d.ts"
+        "app/app.tsx"
     ]
 }

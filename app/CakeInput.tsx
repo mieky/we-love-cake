@@ -26,14 +26,14 @@ class CakeInput extends React.Component<any, CakeInputState> {
         cakeName: any;
     }
 
-    checkIfCanceledByKeypress(e: KeyboardEvent) {
+    checkIfCanceledByKeypress(e: React.KeyboardEvent<any>) {
         // Allow canceling by esc key
         if (e.keyCode === 27) {
             this.toggleOpen(e);
         }
     }
 
-    onSubmit(e: Event) {
+    onSubmit(e: React.FormEvent<any>) {
         e.preventDefault();
         
         const newCake = {
@@ -56,14 +56,14 @@ class CakeInput extends React.Component<any, CakeInputState> {
         }); 
     }
 
-    toggleOpen(e: Event) {
+    toggleOpen(e: React.MouseEvent<any> | React.KeyboardEvent<any>) {
         this.setState({
             open: !this.state.open,
             value: this.state.value
         });
     }
 
-    updateState(e: Event) {
+    updateState(e: React.FormEvent<any>) {
         const newValue = this.refs.cakeName.value;
         this.setState({
             open: this.state.open,

@@ -1,10 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import Store from "./store";
-import { CakeProps } from "./Cake.tsx";
-import { CakeCounter } from "./CakeCounter.tsx";
-import { CakeList, CakeListProps } from "./CakeList.tsx";
-import CakeInput from "./CakeInput.tsx";
+import { CakeProps } from "./Cake";
+import { CakeCounter } from "./CakeCounter";
+import { CakeList, CakeListProps } from "./CakeList";
+import CakeInput from "./CakeInput";
 
 class CakeApp extends React.Component<any, void> {
     constructor(props: any) {

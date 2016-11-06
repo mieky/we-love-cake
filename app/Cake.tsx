@@ -15,7 +15,7 @@ interface CakeState {
 class Cake extends React.Component<CakeProps, CakeState> {
     constructor(props: CakeProps) {
         super(props);
-
+        
         this.handleDragEnter = this.handleDragEnter.bind(this);
         this.handleDragLeave = this.handleDragLeave.bind(this);
         this.handleDragEnd = this.handleDragEnd.bind(this);
@@ -31,19 +31,19 @@ class Cake extends React.Component<CakeProps, CakeState> {
         [string: string]: any;
     }
 
-    handleDragEnter(e: DragEvent) {
+    handleDragEnter(e: React.DragEvent<any>) {
         this.setState({ draggedOver: true });
     }
 
-    handleDragLeave(e: DragEvent) {
+    handleDragLeave(e: React.DragEvent<any>) {
         this.setState({ draggedOver: false });
     }
 
-    handleDragEnd(e: DragEvent) {
+    handleDragEnd(e: React.DragEvent<any>) {
         this.handleDragLeave(e);
     }
 
-    handleDrop(e: DragEvent) {        
+    handleDrop(e: React.DragEvent<any>) {        
         e.preventDefault();
 
         this.setState({ draggedOver: false });

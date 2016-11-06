@@ -1,6 +1,6 @@
 import * as React from "react";
-import { CakeProps } from "./Cake.tsx";
-import { CakeListProps } from "./CakeList.tsx";
+import { CakeProps } from "./Cake";
+import { CakeListProps } from "./CakeList";
 
 interface CakeCounterState {
     daysSinceLastCake: number;
