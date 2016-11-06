@@ -1,12 +1,10 @@
 # we-love-cake
 
-A simple "days since cake was last had" app with Typescript and React.
+A simple "days since cake was last had" app with Typescript 2.0 and React.
 
-Requires NodeJS 4.0+. To get it running, you would do something like:
+Requires NodeJS 6+. To get it running, you would do something like:
 
-    npm install -g typings
     npm install
-    typings install
     npm run server-dev
     open localhost:3000
 
